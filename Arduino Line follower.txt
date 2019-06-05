@@ -1,215 +1,112 @@
-//aristero moter
-int mta=6;
-int mta2=5;
-int en1=3;
 
-//deksi moter
-int mtb=11;
-int mtb2=10;
-int en2=9;
+//ta pins apo to drive 
+int deksia_p=5;
+int deksia_n=6;
+int aristera_p=10;
+int aristera_n=11;
+int deksia_EN = 3;
+int aristera_EN= 9;
+int deksia=A2;
+int polu_deksia=A1;
+int kentro=A3;
+int aristera=A5;
+int polu_aristera=A4; 
+int d=0;
+int a=0;
+int k=0;
+int pa=0;
+int pd=0;
+void setup() {
+    pinMode(deksia_p,OUTPUT);
+    pinMode(deksia_n,OUTPUT);
+    pinMode(aristera_p,OUTPUT);
+    pinMode(aristera_n,OUTPUT);
 
-
-void setup(){  
-  pinMode(mta,OUTPUT);
-  pinMode(mta2,OUTPUT);
-  pinMode(mtb,OUTPUT);
-  pinMode(mtb2,OUTPUT);
-  pinMode(en1,OUTPUT);
-  pinMode(en2,OUTPUT);
-
-  
-  pinMode(A1,INPUT);
-  pinMode(A2,INPUT);
-  pinMode(A3,INPUT);
-  pinMode(A4,INPUT);
-  pinMode(A5,INPUT);
-  }
-
-
-void loop(){
-  
-  int polu_deksia=analogRead(A1);
-  int deksia=analogRead(A2);
-  int kentro=analogRead(A3);
-  int aristera=analogRead(A5);
-  int polu_aristera=analogRead(A4);
-  
-
-       
-   //gia na paei isia
-  if((kentro>820) && (deksia<820) && (aristera <820)){
-    digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,255);
-    analogWrite(en2,255);
- 
-  }
-
+    //ta sensors
+    pinMode(A1,INPUT);
+    pinMode(A2,INPUT);
+    pinMode(A3,INPUT);
+    pinMode(A4,INPUT);
+    pinMode(A5,INPUT);
+    //ta enables valta sta PWM gia na elegxeis thn taxuthta
+    pinMode (deksia_EN, OUTPUT);
+    pinMode (aristera_EN, OUTPUT);
     
     
-//aristera
- if((polu_aristera>820) && (aristera>820) && (kentro<820) && (deksia>820) && (polu_deksia<820)){
+
+}
+
+void loop() {
+
+
+   d=analogRead(deksia);
+   pd=analogRead(polu_deksia);
+   k=analogRead(kentro);
+   a=analogRead(aristera);
+   pa=analogRead(polu_aristera);
   
-    digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,140);
-    analogWrite(en2,200);
-  
-  
-  }
-
-  //deksia
-if ((polu_deksia>820) && (deksia>820) && (kentro<820) && (aristera>820) && (polu_aristera<820)){
-    digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,200);
-    analogWrite(en2,140);
-  
-  }
-
-//aristera
- if ((polu_aristera>820) && (aristera>820) && (kentro<820) && (deksia<820) && (polu_deksia<820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,120);
-    analogWrite(en2,190);
- 
-  }
-
-  //deksia
-if ((polu_deksia>820) && (deksia>820) && (kentro<820) && (aristera<820) && (polu_aristera<820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,190);
-    analogWrite(en2,120);
- 
-  }
-
-  // deksia
-if ((polu_deksia>820) && (deksia>820) && (kentro>820) && (aristera>820) && (polu_aristera<820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,190);
-    analogWrite(en2,120);
- 
-  }
-  
-//apotomo aristera
-  if ((polu_aristera>820) && (aristera<820) && (kentro<820) && (deksia<820) && (polu_deksia<820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,100);
-    analogWrite(en2,160);
- 
-  }
-
-  //apotomo deksia
- if ((polu_aristera<820) && (aristera>820) && (kentro<820) && (deksia<820) && (polu_deksia>820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,160);
-    analogWrite(en2,100);
- 
-  }
-//aristera
-if ( (aristera>820) && (kentro<820) && (deksia<820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,150);
-    analogWrite(en2,200);
- 
-  }
-//deksia
-if ( (aristera<820) && (kentro<820) && (deksia>820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,200);
-    analogWrite(en2,150);
 
 
-  }
-//aristera
-if ( (aristera>820) && (kentro>820) && (deksia<820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,180);
-    analogWrite(en2,230);
- 
-  }
-
-//deksia
-  if ( (aristera<820) && (kentro>820) && (deksia>820)){
-  
-   digitalWrite(mta,HIGH);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,HIGH);
-    digitalWrite(mtb2,LOW);
-    analogWrite(en1,230);
-    analogWrite(en2,180);
- 
-  }
-
-
- if ((polu_aristera<820) && (aristera<820) && (kentro<820) && (deksia<820) && (polu_deksia<820)){
-  
-   digitalWrite(mta,LOW);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,LOW);
-    digitalWrite(mtb2,LOW);
-
-  }
-
-
-
- if ((polu_aristera>820) && (aristera>820) && (kentro>820) && (deksia>820) && (polu_deksia>820)){
-  
-   digitalWrite(mta,LOW);
-    digitalWrite(mta2,LOW);
-    digitalWrite(mtb,LOW);
-    digitalWrite(mtb2,LOW);
-
-  }
-
-
-
-
-
-
-  
+    //gia nas pas deksia
+    if( d<800 && a>800 && pd<800 && pa<800  ){
+    
+     digitalWrite(deksia_p,LOW);
+     digitalWrite(deksia_n,HIGH);
+     digitalWrite(aristera_p,LOW);
+     digitalWrite(aristera_n,HIGH);
+     analogWrite(deksia_EN,0);
+      analogWrite(aristera_EN,170);
+    }
+    //gia nas pas aristera
+     if(a<800 && d>800 && pd<800 && pa<800  ){
+    
+     digitalWrite(deksia_p,LOW);
+     digitalWrite(deksia_n,HIGH);
+     digitalWrite(aristera_p,LOW);
+     digitalWrite(aristera_n,HIGH);
+     analogWrite(aristera_EN,0);
+      analogWrite(deksia_EN,170);
+    }
+     if(pd<800 && pa>800 && a<800 && d<800 ){
+    
+     digitalWrite(deksia_p,LOW);
+     digitalWrite(deksia_n,HIGH);
+     digitalWrite(aristera_p,LOW);
+     digitalWrite(aristera_n,HIGH);
+     analogWrite(deksia_EN,0);
+     analogWrite(aristera_EN,190);
+    
+    }
+    
+     if(pa<800 && pa>800 && a<800 && d<800 ){
+    
+     digitalWrite(deksia_p,LOW);
+     digitalWrite(deksia_n,HIGH);
+     digitalWrite(aristera_p,LOW);
+     digitalWrite(aristera_n,HIGH);
+     analogWrite(aristera_EN,0);
+      analogWrite(deksia_EN,190);
+      }
+      
+     if( pd<800 && a<800  && pa<800  && d<800  ){
+    
+     digitalWrite(deksia_p,LOW);
+     digitalWrite(deksia_n,HIGH);
+     digitalWrite(aristera_p,LOW);
+     digitalWrite(aristera_n,HIGH);
+     analogWrite(aristera_EN,170);
+     analogWrite(deksia_EN,170);
+     }
+      if( pd>800 && a>800  && pa>800  && d>800  ){
+    
+     digitalWrite(deksia_p,LOW);
+     digitalWrite(deksia_n,LOW);
+     digitalWrite(aristera_p,LOW);
+     digitalWrite(aristera_n,LOW);
+     analogWrite(aristera_EN,170);
+     analogWrite(deksia_EN,170);
+     }
+      
+      }
 
  
-
-
-
-  }
-  
